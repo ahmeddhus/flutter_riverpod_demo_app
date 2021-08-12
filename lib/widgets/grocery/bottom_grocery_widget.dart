@@ -44,12 +44,13 @@ class BottomGroceryWidget extends ConsumerWidget {
                       Container(
                         height: 50.0.h,
                         width: 150.0.w,
-                        child: SvgPicture.asset('${modelView.offerModel.logo}'),
+                        child: SvgPicture.asset('${modelView.offerModel.logo??''}'),
                       ),
                       Row(
                         children: [
+
                           Text(
-                            '\$ ${modelView.offerModel.currentPrice}',
+                            '\$ ${modelView.offerModel.currentPrice??''}',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Poppins',
@@ -61,7 +62,7 @@ class BottomGroceryWidget extends ConsumerWidget {
                             width: 16.0.w,
                           ),
                           Text(
-                            '\$ ${modelView.offerModel.previousPrice}',
+                            '\$ ${modelView.offerModel.previousPrice??''}',
                             style: TextStyle(
                               fontFamily: 'Poppins',
                               fontSize: 18.0.sp,
@@ -75,7 +76,7 @@ class BottomGroceryWidget extends ConsumerWidget {
                         height: 16.0.h,
                       ),
                       Text(
-                        '* Available until ${modelView.offerModel.expireDate}',
+                        '* Available until ${modelView.offerModel.expireDate??''}',
                         style: TextStyle(
                           fontFamily: 'Poppins',
                           fontSize: 9.0.sp,

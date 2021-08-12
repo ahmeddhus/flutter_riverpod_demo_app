@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo_app_task/controller/cart/cart_controller.dart';
 import 'package:flutter_demo_app_task/screens/cart_screen.dart';
 import 'package:flutter_demo_app_task/screens/favorite_screen.dart';
 import 'package:flutter_demo_app_task/screens/grocery_screen.dart';
 import 'package:flutter_demo_app_task/screens/news_screen.dart';
 import 'package:flutter_demo_app_task/utils/style/colors.dart' as Style;
 import 'package:flutter_demo_app_task/widgets/home/appbar_widget.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -46,14 +48,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 width: 35.0.w,
                 color: Color(0xFFFFFFFF),
               ),
-              Text(
-                '\$91',
-                style: TextStyle(
-                  fontFamily: 'Poppins',
-                  color: Color(0xFFFFFFFF),
-                  fontSize: 11.0.sp,
-                ),
-              ),
+              Consumer(builder: (context, watch, child) {
+                final modelView = watch(getCartFuture);
+
+                return Text(
+                  '\$${modelView.totalPrice}',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    color: Color(0xFFFFFFFF),
+                    fontSize: 11.0.sp,
+                  ),
+                );
+              }),
             ],
           ),
         ),

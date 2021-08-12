@@ -38,11 +38,13 @@ class _DealsCardWidgetState extends State<DealsCardWidget> {
               _dealsModel.currentPrice,
               1);
           context.read(getCartFuture).addToCart(model);
+          context.read(getCartFuture).increasePrice(_dealsModel.currentPrice);
+
           _dealsModel.inCart = true;
         } else {
-          context
-              .read(getCartFuture)
-              .removeFromCart(_dealsModel.id, _dealsModel.currentPrice);
+          context.read(getCartFuture).removeFromCart(_dealsModel.id);
+          context.read(getCartFuture).decreasePrice(_dealsModel.currentPrice);
+
           _dealsModel.inCart = false;
         }
       },

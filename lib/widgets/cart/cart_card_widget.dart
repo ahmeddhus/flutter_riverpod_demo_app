@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo_app_task/controller/cart/cart_controller.dart';
 import 'package:flutter_demo_app_task/models/cart_product_model.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CartCardWidget extends StatefulWidget {
   final CartProductModel _cartProduct;
@@ -81,8 +83,12 @@ class _CartCardWidgetState extends State<CartCardWidget> {
                 InkWell(
                   onTap: () {
                     setState(() {
-                      if (_cartProduct.cartProductQty > 1)
+                      if (_cartProduct.cartProductQty > 1) {
                         _cartProduct.cartProductQty--;
+                        context
+                            .read(getCartFuture)
+                            .decreasePrice(_cartProduct.cartProductPrice);
+                      }
                     });
                   },
                   child: Container(
@@ -118,6 +124,9 @@ class _CartCardWidgetState extends State<CartCardWidget> {
                   onTap: () {
                     setState(() {
                       _cartProduct.cartProductQty++;
+                      context
+                          .read(getCartFuture)
+                          .increasePrice(_cartProduct.cartProductPrice);
                     });
                   },
                   child: Container(

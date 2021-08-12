@@ -11,15 +11,21 @@ class GetCartData extends ChangeNotifier {
 
   void addToCart(CartProductModel product) {
     cartProductList.add(product);
-    totalPrice += product.cartProductPrice;
     notifyListeners();
   }
 
-  void removeFromCart(int productID, int productPrice) {
+  void increasePrice(int price){
+    totalPrice += price;
+    notifyListeners();
+  }
+
+  void decreasePrice(int price){
+    totalPrice -= price;
+    notifyListeners();
+  }
+
+  void removeFromCart(int productID) {
     cartProductList.removeWhere((element) => element.id == productID);
-
-    totalPrice -= productPrice;
-
     notifyListeners();
   }
 }

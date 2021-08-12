@@ -14,12 +14,11 @@ class LocationWidget extends ConsumerWidget {
         ? Center(child: CircularProgressIndicator())
         : Container(
             height: 70.0.h,
-            width: 100.0.w,
+            width: 120.0.w,
             child: Stack(
               children: [
                 Positioned(
                   left: 0.0,
-                  right: 0.0,
                   top: 0.0,
                   bottom: 0.0,
                   child: Container(
@@ -30,8 +29,7 @@ class LocationWidget extends ConsumerWidget {
                   ),
                 ),
                 Positioned(
-                  left: 0.0,
-                  right: 0.0,
+                  left: 8.0,
                   top: 0.0,
                   bottom: 0.0,
                   child: Row(

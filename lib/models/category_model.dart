@@ -1,14 +1,20 @@
-import 'package:flutter/material.dart';
-
 class CategoryModel {
-  String _categoryName;
+  String name;
 
   //should be image
-  Color _categoryColor;
+  String color;
 
-  CategoryModel(this._categoryColor, this._categoryName);
+  CategoryModel(this.name, this.color);
 
-  String get categoryName => _categoryName;
+  CategoryModel.fromJson(dynamic json) {
+    name = json['name'];
+    color = json['color'];
+  }
 
-  Color get categoryColor => _categoryColor;
+  Map<String, dynamic> toJson() {
+    var map = <String, dynamic>{};
+    map['name'] = name;
+    map['color'] = color;
+    return map;
+  }
 }

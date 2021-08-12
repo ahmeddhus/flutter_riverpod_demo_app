@@ -1,0 +1,15 @@
+{
+  "current_location": "Mustafa St.",
+  "locations": [
+    {
+      "name": "Home Address",
+      "address": "Mustafa St. No:2",
+      "street": "Street x12"
+    },
+    {
+      "name": "Office Address",
+      "address": "Axis Istanbul, B2 Bloc",
+      "street": "Floor 2, Office 11"
+    }
+  ]
+}

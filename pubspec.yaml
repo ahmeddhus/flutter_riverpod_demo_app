@@ -17,6 +17,7 @@ dependencies:
   flutter_screenutil:
   flutter_riverpod:
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -29,6 +30,7 @@ flutter:
     - assets/
     - assets/icons/
     - assets/images/
+    - assets/json/
 
   fonts:
     - family: Poppins

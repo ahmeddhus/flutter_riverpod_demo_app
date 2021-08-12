@@ -1,35 +1,40 @@
-import 'package:flutter/material.dart';
-
 class DealsModel {
-  String _dealName;
+  String name;
+  String color;
+  int pieces;
+  int distance;
+  int currentPrice;
+  int previousPrice;
+  bool isFavorite;
 
-  //should be image
-  Color _dealColor;
+  DealsModel(
+    this.name,
+    this.color,
+    this.pieces,
+    this.distance,
+    this.currentPrice,
+    this.previousPrice,
+    this.isFavorite);
 
-  int _dealPieces;
-  int _dealDistance;
-  int _dealCurrentPrice;
-  int _dealPreviousPrice;
-  bool _isFavoriteProduct;
+  DealsModel.fromJson(dynamic json) {
+    name = json['name'];
+    color = json['color'];
+    pieces = json['pieces'];
+    distance = json['distance'];
+    currentPrice = json['current_price'];
+    previousPrice = json['previous_price'];
+    isFavorite = json['is_favorite'];
+  }
 
-  DealsModel(this._dealColor, this._dealName, this._dealPieces,
-      this._dealDistance, this._dealCurrentPrice, this._dealPreviousPrice, this._isFavoriteProduct);
-
-  int get dealPreviousPrice => _dealPreviousPrice;
-
-  int get dealCurrentPrice => _dealCurrentPrice;
-
-  int get dealDistance => _dealDistance;
-
-  int get dealPieces => _dealPieces;
-
-  Color get dealColor => _dealColor;
-
-  String get dealName => _dealName;
-
-  bool get isFavoriteProduct => _isFavoriteProduct;
-
-  set isFavoriteProduct(bool value) {
-    _isFavoriteProduct = value;
+  Map<String, dynamic> toJson() {
+    var map = <String, dynamic>{};
+    map['name'] = name;
+    map['color'] = color;
+    map['pieces'] = pieces;
+    map['distance'] = distance;
+    map['current_price'] = currentPrice;
+    map['previous_price'] = previousPrice;
+    map['is_favorite'] = isFavorite;
+    return map;
   }
 }

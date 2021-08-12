@@ -1,133 +1,92 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo_app_task/controller/grocery/offer_controller.dart';
 import 'package:flutter_demo_app_task/utils/style/colors.dart' as Style;
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class BottomGroceryWidget extends StatelessWidget {
+class BottomGroceryWidget extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, watch) {
+    final modelView = watch(getOfferFuture);
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Container(
-        height: 135.0.h,
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-          color: Color(0xFFF9BDAD),
-          borderRadius: BorderRadius.all(
-            Radius.circular(20),
-          ),
-        ),
-        child: Row(
-          children: [
-            Container(
-              width: 120.0.w,
-              height: 120.0.h,
+      child: modelView.offerModel == null
+          ? Center(child: CircularProgressIndicator())
+          : Container(
+              height: 135.0.h,
+              width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                  color: Color(0xFFF9BDAD),
-                  borderRadius: BorderRadius.circular(20)),
-            ),
-            SizedBox(
-              width: 8.0.w,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 16.0.h,
+                color: Color(0xFFF9BDAD),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(20),
                 ),
-                Container(
-                  height: 50.0.h,
-                  width: 150.0.w,
-                  child: Stack(
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    width: 120.0.w,
+                    height: 120.0.h,
+                    decoration: BoxDecoration(
+                        color: Color(0xFFF9BDAD),
+                        borderRadius: BorderRadius.circular(20)),
+                  ),
+                  SizedBox(
+                    width: 8.0.w,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Positioned(
-                        child: Text(
-                          'Mega',
-                          style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: 11.0.sp,
-                            color: Style.Colors.secondaryDarkColor,
-                          ),
-                        ),
+                      SizedBox(
+                        height: 16.0.h,
                       ),
-                      Positioned(
-                        top: 5.0,
-                        child: Text(
-                          'WHOPP',
-                          style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: 31.0.sp,
-                            color: Color(0xFF21114B),
-                          ),
-                        ),
+                      Container(
+                        height: 50.0.h,
+                        width: 150.0.w,
+                        child: SvgPicture.asset('${modelView.offerModel.logo}'),
                       ),
-                      Positioned(
-                        top: 5.0,
-                        right: 0.0,
-                        child: RichText(
-                          text: TextSpan(
-                            text: 'E',
+                      Row(
+                        children: [
+                          Text(
+                            '\$ ${modelView.offerModel.currentPrice}',
                             style: TextStyle(
+                              fontWeight: FontWeight.bold,
                               fontFamily: 'Poppins',
-                              fontSize: 31.0.sp,
+                              fontSize: 18.0.sp,
                               color: Style.Colors.secondaryDarkColor,
                             ),
-                            children: <TextSpan>[
-                              TextSpan(
-                                text: 'R',
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 32.0.sp,
-                                  color: Color(0xFF21114B),
-                                ),
-                              ),
-                            ],
                           ),
+                          SizedBox(
+                            width: 16.0.w,
+                          ),
+                          Text(
+                            '\$ ${modelView.offerModel.previousPrice}',
+                            style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 18.0.sp,
+                              color: Style.Colors.textColor,
+                              decoration: TextDecoration.lineThrough,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 16.0.h,
+                      ),
+                      Text(
+                        '* Available until ${modelView.offerModel.expireDate}',
+                        style: TextStyle(
+                          fontFamily: 'Poppins',
+                          fontSize: 9.0.sp,
+                          color: Style.Colors.textColor,
                         ),
                       ),
                     ],
                   ),
-                ),
-                Row(
-                  children: [
-                    Text(
-                      '\$ 17',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Poppins',
-                        fontSize: 18.0.sp,
-                        color: Style.Colors.secondaryDarkColor,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 16.0.w,
-                    ),
-                    Text(
-                      '\$ 32',
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 18.0.sp,
-                        color: Style.Colors.textColor,
-                        decoration: TextDecoration.lineThrough,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 16.0.h,
-                ),
-                Text(
-                  '* Available until 24 December 2020',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 9.0.sp,
-                    color: Style.Colors.textColor,
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ],
-        ),
-      ),
     );
   }
 }

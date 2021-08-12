@@ -10,6 +10,7 @@ class CategoryCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int colorCode = int.parse(_categoryModel.color);
     return Container(
         child: Column(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -18,14 +19,14 @@ class CategoryCardWidget extends StatelessWidget {
           width: 60.0.w,
           height: 60.0.h,
           decoration: BoxDecoration(
-              color: _categoryModel.categoryColor,
+              color: Color(colorCode),
               borderRadius: BorderRadius.circular(15)),
         ),
         SizedBox(
           height: 8.0.h,
         ),
         Text(
-          '${_categoryModel.categoryName}',
+          '${_categoryModel.name}',
           style: TextStyle(
             fontFamily: 'Poppins',
             fontSize: 10.0.sp,

@@ -19,6 +19,8 @@ class _DealsCardWidgetState extends State<DealsCardWidget> {
 
   @override
   Widget build(BuildContext context) {
+    int colorCode = int.parse(_dealsModel.color);
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -28,7 +30,7 @@ class _DealsCardWidgetState extends State<DealsCardWidget> {
               width: 100.0.w,
               height: 100.0.h,
               decoration: BoxDecoration(
-                  color: _dealsModel.dealColor,
+                  color: Color(colorCode),
                   borderRadius: BorderRadius.circular(15)),
             ),
             Positioned(
@@ -49,13 +51,13 @@ class _DealsCardWidgetState extends State<DealsCardWidget> {
                   child: InkWell(
                     onTap: () {
                       setState(() {
-                        if(_dealsModel.isFavoriteProduct == true)
-                          _dealsModel.isFavoriteProduct = false;
-                        else if(_dealsModel.isFavoriteProduct == false)
-                          _dealsModel.isFavoriteProduct= true;
+                        if(_dealsModel.isFavorite == true)
+                          _dealsModel.isFavorite = false;
+                        else if(_dealsModel.isFavorite == false)
+                          _dealsModel.isFavorite= true;
                       });
                     },
-                    child: _dealsModel.isFavoriteProduct == true
+                    child: _dealsModel.isFavorite == true
                         ? Icon(
                             Icons.favorite,
                             color: Style.Colors.secondaryDarkColor,
@@ -79,7 +81,7 @@ class _DealsCardWidgetState extends State<DealsCardWidget> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              '${_dealsModel.dealName}',
+              '${_dealsModel.name}',
               style: TextStyle(
                 fontFamily: 'Poppins',
                 fontWeight: FontWeight.bold,
@@ -91,7 +93,7 @@ class _DealsCardWidgetState extends State<DealsCardWidget> {
               height: 8.0.h,
             ),
             Text(
-              'Pieces ${_dealsModel.dealPieces}',
+              'Pieces ${_dealsModel.pieces}',
               style: TextStyle(
                 fontFamily: 'Poppins',
                 fontSize: 10.0.sp,
@@ -112,7 +114,7 @@ class _DealsCardWidgetState extends State<DealsCardWidget> {
                   width: 8.0.w,
                 ),
                 Text(
-                  '${_dealsModel.dealDistance} Minutes Away',
+                  '${_dealsModel.distance} Minutes Away',
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 10.0.sp,
@@ -127,7 +129,7 @@ class _DealsCardWidgetState extends State<DealsCardWidget> {
             Row(
               children: [
                 Text(
-                  '\$ ${_dealsModel.dealCurrentPrice}',
+                  '\$ ${_dealsModel.currentPrice}',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontFamily: 'Poppins',
@@ -139,7 +141,7 @@ class _DealsCardWidgetState extends State<DealsCardWidget> {
                   width: 8.0.w,
                 ),
                 Text(
-                  '\$ ${_dealsModel.dealPreviousPrice}',
+                  '\$ ${_dealsModel.previousPrice}',
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 13.0.sp,

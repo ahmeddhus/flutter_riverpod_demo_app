@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Summer Sun Ice Cream Pack",
+    "color": "0xFFFBEDD8",
+    "pieces": 5,
+    "distance": 15,
+    "current_price": 12,
+    "previous_price": 18,
+    "is_favorite": false
+  },
+  {
+    "name": "Summer Sun Ice Cream Pack",
+    "color": "0xFFFAD96D",
+    "pieces": 5,
+    "distance": 15,
+    "current_price": 12,
+    "previous_price": 18,
+    "is_favorite": true
+  },
+  {
+    "name": "Summer Sun Ice Cream Pack",
+    "color": "0xFFCCB8FF",
+    "pieces": 5,
+    "distance": 15,
+    "current_price": 12,
+    "previous_price": 18,
+    "is_favorite": false
+  },
+  {
+    "name": "Summer Sun Ice Cream Pack",
+    "color": "0xFFB0EAFD",
+    "pieces": 5,
+    "distance": 15,
+    "current_price": 12,
+    "previous_price": 18,
+    "is_favorite": false
+  },
+  {
+    "name": "Summer Sun Ice Cream Pack",
+    "color": "0xFFFF9DC2",
+    "pieces": 5,
+    "distance": 15,
+    "current_price": 12,
+    "previous_price": 18,
+    "is_favorite": false
+  }
+]
